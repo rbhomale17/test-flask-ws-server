@@ -1,7 +1,4 @@
 from flask import Flask, request, jsonify
-import asyncio
-import websockets
-import json
 
 app = Flask(__name__)
 
@@ -19,5 +16,3 @@ def receive_data():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
-
-
