@@ -1,0 +1,9 @@
+eventlet
+Flask
+Flask_SocketIO
+kiteconnect
+psycopg2
+psycopg2_binary
+python-dotenv
+python-socketio
+websockets
