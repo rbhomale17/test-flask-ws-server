@@ -7,11 +7,12 @@ import routes
 import websocket
 import eventlet
 import eventlet.wsgi
+import os
 
 
 
 para = {key: value for key, value in dotenv_values('.env').items()}
-print(para)
+print(para,os.getenv("user"))
 db = Database(para)
 kite = KiteConnect(api_key=para['api_key'])
 
