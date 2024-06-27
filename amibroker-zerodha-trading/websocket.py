@@ -129,6 +129,7 @@ def process_signal(data, app):
 
     with app.app_context():
         parsed_data = json.loads(data)
+        print(parsed_data)
         signal_type = parsed_data.get("signal_type")
 
         if signal_type == "placeorder":
