@@ -11,8 +11,17 @@ import os
 
 
 
-para = {key: value for key, value in dotenv_values('.env').items()}
-print(para,os.getenv("user"))
+# para = {key: value for key, value in dotenv_values('.env').items()}
+para = {
+            "user": os.getenv("user"),
+            "password": os.getenv("password"),
+            "host": os.getenv("host"),
+            "port": os.getenv("port"),
+            "database": os.getenv("database"),
+            "api_key":os.getenv("api_key"),
+            "session_secret_key":os.getenv("session_secret_key")
+        }
+print(para)
 db = Database(para)
 kite = KiteConnect(api_key=para['api_key'])
 
