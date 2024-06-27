@@ -11,7 +11,7 @@ import eventlet.wsgi
 
 
 para = {key: value for key, value in dotenv_values('.env').items()}
-print(para['user'],para)
+print(para)
 db = Database(para)
 kite = KiteConnect(api_key=para['api_key'])
 
