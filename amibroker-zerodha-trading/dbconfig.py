@@ -204,7 +204,7 @@ class Database:
     def create_database_if_not_exists(self):
         try:
             # Connect to the default database
-            uri = f"postgresql://{self.para['user']}:{self.para['password']}@{self.para['host']}:{self.para['port']}/postgres"
+            uri = f"postgresql://{self.para['user']}:{self.para['password']}@{self.para['host']}:{self.para['port']}/{self.para['database']}"
             conn = psycopg2.connect(dsn=uri)
             conn.autocommit = True
             cur = conn.cursor()
