@@ -198,6 +198,7 @@ class Database:
             print("Connection Failed")
 
     def connect_to_db(self):
+        print(self.para)
         uri = f"postgresql://{self.para['user']}:{self.para['password']}@{self.para['host']}:{self.para['port']}/{self.para['database']}"
         return psycopg2.connect(dsn=uri)
 
