@@ -220,8 +220,13 @@ class Database:
                 # Create the database
                 cur.execute(f"CREATE DATABASE {self.para['database']}")
                 print(f"Database {self.para['database']} created successfully.")
-            cur.close()
-            conn.close()
+                cur.close()
+                conn.close()
+            else:
+                print("Database alredy Exists")
+                cur.close()
+                conn.close()
+            
         except Exception as e:
             print(f"Error creating database: {e}")
 
