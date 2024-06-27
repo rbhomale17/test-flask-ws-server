@@ -9,19 +9,16 @@ import eventlet
 import eventlet.wsgi
 import os
 
-
-
-# para = {key: value for key, value in dotenv_values('.env').items()}
 para = {
-            "user": os.getenv("user"),
-            "password": os.getenv("password"),
-            "host": os.getenv("host"),
-            "port": os.getenv("port"),
-            "database": os.getenv("database"),
-            "api_key":os.getenv("api_key"),
-            "session_secret_key":os.getenv("session_secret_key")
+        "user": os.getenv("user"),
+        "password": os.getenv("password"),
+        "host": os.getenv("host"),
+        "port": os.getenv("port"),
+        "database": os.getenv("database"),
+        "api_key":os.getenv("api_key"),
+        "session_secret_key":os.getenv("session_secret_key")
         }
-print(para)
+
 db = Database(para)
 kite = KiteConnect(api_key=para['api_key'])
 
@@ -34,4 +31,4 @@ websocket.register_websocket_handlers(socketio, app)
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5000)
+    socketio.run(app, debug=True, host='0.0.0.0', port=5000)
