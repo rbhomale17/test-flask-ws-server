@@ -15,4 +15,4 @@ def receive_data():
     return jsonify({"status": "success", "message": "Data received"}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=False, port=5000)
