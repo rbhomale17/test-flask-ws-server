@@ -1,6 +1,6 @@
 import eventlet
 eventlet.monkey_patch()
-from flask import Flask
+from flask import Flask, request, g
 from kiteconnect import KiteConnect
 from flask_socketio import SocketIO
 from dotenv import dotenv_values
@@ -41,6 +41,21 @@ def log_response_info(response):
 def log_request_teardown(exception=None):
     if exception:
         print(f"Route hit: {request.path}, Exception: {exception}")
+
+# SocketIO logging
+@socketio.on('connect')
+def handle_connect():
+    print(f"Client connected: {request.sid}")
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print(f"Client disconnected: {request.sid}")
+
+@socketio.on('custom_event')
+def handle_custom_event(data):
+    print(f"Custom event received: {data}")
+    # Handle the event and respond as needed
+    socketio.emit('response', {'status': 'success'})
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=5000)
