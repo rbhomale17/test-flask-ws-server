@@ -188,9 +188,6 @@ import json
 class Database:
     def __init__(self, para):
         self.para = para
-        print('self',self.para)
-        print(para['user'])
-        print(self.para['user'])
         self.create_database_if_not_exists()
         self.conn = self.connect_to_db()
         self.cur = self.conn.cursor()
@@ -201,7 +198,6 @@ class Database:
             print("Connection Failed")
 
     def connect_to_db(self):
-        print(self.para)
         uri = f"postgresql://{self.para['user']}:{self.para['password']}@{self.para['host']}:{self.para['port']}/{self.para['database']}"
         return psycopg2.connect(dsn=uri)
 

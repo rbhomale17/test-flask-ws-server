@@ -1,3 +1,5 @@
+import eventlet
+eventlet.monkey_patch()
 from flask import Flask
 from kiteconnect import KiteConnect
 from flask_socketio import SocketIO
@@ -5,7 +7,6 @@ from dotenv import dotenv_values
 from dbconfig import Database
 import routes
 import websocket
-import eventlet
 import eventlet.wsgi
 import os
 
@@ -18,6 +19,7 @@ para = {
         "api_key":os.getenv("api_key"),
         "session_secret_key":os.getenv("session_secret_key")
         }
+
 
 db = Database(para)
 kite = KiteConnect(api_key=para['api_key'])

@@ -56,9 +56,9 @@ async def client():
     async def response(data):
         print(f"Received response: {data}")
 
-    await sio.connect('http://localhost:5000')
+    # await sio.connect('http://localhost:5000')
     # Serverlink
-    # await sio.connect('https://test-flask-ws-server-main-app.onrender.com')
+    await sio.connect('https://test-flask-ws-server-redeployed-main.onrender.com')
 
     for _ in range(40):  # Simulate sending 40 signals
         signal_type = random.choice(['placeorder', 'placegtt'])
