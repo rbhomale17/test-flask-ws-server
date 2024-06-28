@@ -32,5 +32,15 @@ routes.register_blueprints(app, db, kite)
 websocket.register_websocket_handlers(socketio, app)
 
 
+@app.after_request
+def log_response_info(response):
+    print(f"Route hit: {request.path}, Status: {response.status_code}")
+    return response
+
+@app.teardown_request
+def log_request_teardown(exception=None):
+    if exception:
+        print(f"Route hit: {request.path}, Exception: {exception}")
+
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host='0.0.0.0', port=5000)
+    socketio.run(app, host='0.0.0.0', port=5000)
