@@ -31,8 +31,8 @@ def create_profile_blueprint(db, kite):
                     flash('Login successful!', 'success')
                     return redirect(url_for('profile'))
             except Exception as e:
-                flash('Login failed: ' + str(e), 'danger')
-        return redirect(url_for('index'))
+                flash('Login failed: ' + str(e), 'danger') 
+        return redirect(url_for('index.home'))
 
     @profile_bp.route('/profile', methods=['GET'])
     def profile():
@@ -51,3 +51,5 @@ def create_profile_blueprint(db, kite):
             return jsonify({"error": str(e)}), 400
 
     return profile_bp
+
+#Hello There
